@@ -15,6 +15,17 @@ firebase.initializeApp(firebaseConfig);
 
 const database = firebase.database();
 
+// database.ref("admins").push({ email: "avinashdhillor24@gmail.com" });
+
+database.ref("sessions").set({
+  register: {
+    state: false
+  },
+  allocate: {
+    state: false
+  }
+});
+
 let googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
 export { firebase, database as default, googleAuthProvider };
