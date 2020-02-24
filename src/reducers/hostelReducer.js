@@ -1,13 +1,9 @@
-import { ADD_HOSTEL } from "../actions/types";
+import { SET_HOSTELS } from "../actions/types";
 
-export default (state = {}, action) => {
+export default (state = [], action) => {
   switch (action.type) {
-    case ADD_HOSTEL:
-      return {
-        ...state,
-        ...action.data
-      };
-
+    case SET_HOSTELS:
+      return [...action.hostels];
     default:
       return state;
   }

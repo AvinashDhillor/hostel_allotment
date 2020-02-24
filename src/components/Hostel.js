@@ -2,15 +2,36 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import HostelRoomsData from "./HostelRoomsData";
 import { bindActionCreators } from "redux";
-import { startAddHostel } from "../actions/hostel";
+import { startAddHostel, startSetHostel } from "../actions/hostel";
+import HostelDetail from "./HostelDetail";
 
 class Hostel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      rooms: []
+      toggleForm: false,
+      rooms: [],
+      hostels: []
     };
   }
+
+  componentDidMount() {
+    this.props.startSetHostel();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.hostels !== this.state.hostels) {
+      this.setState(() => ({
+        hostels: nextProps.hostels
+      }));
+    }
+  }
+
+  toggleHostelForm = () => {
+    this.setState(prevState => ({
+      toggleForm: !prevState.toggleForm
+    }));
+  };
 
   handleRoomsData = e => {
     e.preventDefault();
@@ -33,7 +54,6 @@ class Hostel extends Component {
       hostelcode: e.target.elements.hostelcode.value,
       rooms: this.state.rooms
     };
-    console.log(data);
 
     this.props.startAddHostel(data);
     e.target.elements.hostelname.value = "";
@@ -45,34 +65,92 @@ class Hostel extends Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleHostelData} id="hostelform"></form>
-        <input
-          type="text"
-          name="hostelname"
-          form="hostelform"
-          placeholder="Enter hostel name : "
-        ></input>
-        <input
-          type="text"
-          name="hostelcode"
-          form="hostelform"
-          placeholder="Enter hostel code: eg BH-1"
-        ></input>
-        {this.state.rooms.map((room, index) => (
-          <div key={index}>
-            {room.range} - {room.occupancy}
+      <>
+        <div className="container  my-4">
+          <div className="d-flex justify-content-center">
+            <button
+              onClick={this.toggleHostelForm}
+              className="btn btn-info btn-bg my-3"
+            >
+              <i class="fas fa-plus-square mr-2"></i>
+              ADD NEW HOSTEL
+            </button>
           </div>
-        ))}
-        <HostelRoomsData handlerooms={this.handleRoomsData}></HostelRoomsData>
-        <input type="submit" form="hostelform"></input>
-      </div>
+
+          <div
+            class="card text-white bg-info my-3 mx-auto"
+            style={{
+              maxWidth: "40rem",
+              display: this.state.toggleForm ? "block" : "none"
+            }}
+          >
+            <div class="card-header bg-info text-white">
+              <i class="fas fa-archway mr-2"></i>Fill Hostel Detail{" "}
+            </div>
+            <div class="card-body">
+              <form onSubmit={this.handleHostelData} id="hostelform"></form>
+
+              <div className="form-group">
+                <label for="hostelName">Enter Hostel Name</label>
+                <input
+                  className="form-control"
+                  type="text"
+                  id="hostelName"
+                  name="hostelname"
+                  form="hostelform"
+                  placeholder="Eg. Ks khurana Hall "
+                ></input>
+              </div>
+
+              <div className="form-group">
+                <label for="hostelCode">Enter Hostel Code</label>
+                <input
+                  className="form-control"
+                  type="text"
+                  name="hostelcode"
+                  form="hostelform"
+                  placeholder="Eg. BH-1"
+                ></input>
+              </div>
+              <h6 class="text-center text-white"> - Add rooms -</h6>
+              {this.state.rooms.map((room, index) => (
+                <div key={index}>
+                  Range = {room.range}, Size = {room.occupancy}
+                </div>
+              ))}
+              <HostelRoomsData
+                handlerooms={this.handleRoomsData}
+              ></HostelRoomsData>
+              <button
+                onClick={this.toggleHostelForm}
+                type="submit"
+                form="hostelform"
+                className="btn btn-light text-info btn-lg btn-block"
+              >
+                <i class="fas fa-paper-plane mr-2"></i>Submit
+              </button>
+            </div>
+          </div>
+        </div>
+        <hr></hr>
+        <div className="container my-4 ">
+          {this.state.hostels.map(hostel => {
+            console.log(hostel);
+
+            return <HostelDetail hostel={hostel}></HostelDetail>;
+          })}
+        </div>
+      </>
     );
   }
 }
 
+const mapStateToProps = state => ({
+  hostels: state.hostel
+});
+
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ startAddHostel }, dispatch);
+  return bindActionCreators({ startAddHostel, startSetHostel }, dispatch);
 };
 
-export default connect(null, mapDispatchToProps)(Hostel);
+export default connect(mapStateToProps, mapDispatchToProps)(Hostel);

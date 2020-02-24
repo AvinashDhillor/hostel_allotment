@@ -1,16 +1,62 @@
 import database from "../firebase/firebase";
-import { ADD_HOSTEL } from "./types";
+import { SET_HOSTELS } from "./types";
 
-export const addHostel = data => ({
-  type: ADD_HOSTEL,
-  data
+export const setHostels = data => ({
+  type: SET_HOSTELS,
+  hostels: data
 });
 
-export const startAddHostel = ({ hostelname, hostelcode, rooms }) => {
-  let data = {};
-  data[hostelcode] = {
-    name: hostelname
+// let output = [
+//   {
+//     name: "krishna",
+//     rooms: [{ roomNumber: 202, occupency: [{ value: 1, occupied: false }] }]
+//   }
+// ];
+
+const toStateForm = snapshot => {
+  let output = [];
+  snapshot.forEach(snap => {
+    let data = {};
+    data["name"] = snap.val().name;
+    data["rooms"] = [];
+    let index = 0;
+    snap.forEach(roomSnap => {
+      if (roomSnap.key !== "name") {
+        let roomObj = {
+          roomNumber: roomSnap.key,
+          occupancy: []
+        };
+        data["rooms"].push(roomObj);
+        roomSnap.forEach(roomNumberSnap => {
+          let obj = {
+            value: roomNumberSnap.key,
+            occupied: roomNumberSnap.val().occupied
+          };
+          data["rooms"][index].occupancy.push(obj);
+        });
+        index++;
+      }
+    });
+    output.push(data);
+  });
+  return output;
+};
+
+export const startSetHostel = () => {
+  return dispatch => {
+    database
+      .ref("hostels")
+      .once("value")
+      .then(snapshot => {
+        let modifiedData = toStateForm(snapshot);
+        dispatch(setHostels(modifiedData));
+      });
   };
+};
+
+const toDatabaseForm = ({ hostelname, rooms }) => {
+  let data = {};
+  data["name"] = hostelname;
   rooms.forEach(room => {
     let roomRange = room.range.split(",");
     roomRange.forEach(range => {
@@ -23,11 +69,21 @@ export const startAddHostel = ({ hostelname, hostelcode, rooms }) => {
             occupied: false
           };
         }
-        data[hostelcode][i] = dat;
+        data[i] = dat;
       }
     });
   });
+  return data;
+};
+
+export const startAddHostel = hostelData => {
+  let modifiedData = toDatabaseForm(hostelData);
   return dispatch => {
-    database.ref("hostels").set(data);
+    database
+      .ref(`hostels/${hostelData.hostelcode}`)
+      .set(modifiedData)
+      .then(() => {
+        dispatch(startSetHostel());
+      });
   };
 };

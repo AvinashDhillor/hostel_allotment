@@ -47,7 +47,6 @@ export const startSetSession = () => {
       .ref("sessions")
       .once("value")
       .then(snapshot => {
-        console.log(snapshot.val());
         dispatch(
           setSession({
             register: snapshot.val().register,

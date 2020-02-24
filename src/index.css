@@ -12,10 +12,6 @@ code {
     monospace;
 }
 
-.active {
-  font-size: 20px;
-}
-
-a {
-  padding: 2px;
+#hostelDataToggleButton:focus {
+  outline: 0;
 }

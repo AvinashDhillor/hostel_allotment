@@ -47,18 +47,46 @@ class Session extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <label>Register</label>
-          <button onClick={this.handleRegister}>
-            {this.state.activateRegister ? "Deactivate" : "Activate"}
-          </button>
-        </div>
-        <div>
-          <label>Room Allocate</label>
-          <button onClick={this.handleAllocate}>
-            {this.state.activateAllocate ? "Deactivate" : "Activate"}
-          </button>
+      <div className="container py-4">
+        <div
+          class="card  text-white bg-info m-4 mx-auto"
+          style={{ maxWidth: "35rem" }}
+        >
+          <div class="card-header text-white">
+            {" "}
+            <i class="fas fa-history mr-2"></i>Hostel Sessions
+          </div>
+          <div class="card-body bg-info">
+            <p className="display-4 text-center">Handle Session</p>
+            <div className="row m-3 p-2">
+              <div className="col-6 text-center border-right border-white mb-1">
+                <h2>Register</h2>
+                <button
+                  onClick={this.handleRegister}
+                  className={
+                    this.state.activateRegister
+                      ? "btn btn-danger"
+                      : "btn btn-outline-light"
+                  }
+                >
+                  {this.state.activateRegister ? "Deactivate" : "Activate"}
+                </button>
+              </div>
+              <div className="col-6 text-center mb-1">
+                <h2>Allotment</h2>
+                <button
+                  onClick={this.handleAllocate}
+                  className={
+                    this.state.activateAllocate
+                      ? "btn btn-danger"
+                      : "btn btn-outline-light"
+                  }
+                >
+                  {this.state.activateAllocate ? "Deactivate" : "Activate"}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );
