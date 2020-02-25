@@ -17,14 +17,14 @@ const database = firebase.database();
 
 // database.ref("admins").push({ email: "avinashdhillor24@gmail.com" });
 
-database.ref("sessions").set({
-  register: {
-    state: false
-  },
-  allocate: {
-    state: false
-  }
-});
+// database.ref("sessions").set({
+//   register: {
+//     state: false
+//   },
+//   allocate: {
+//     state: false
+//   }
+// });
 
 let googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 

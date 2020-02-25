@@ -17,6 +17,7 @@ const toStateForm = snapshot => {
   let output = [];
   snapshot.forEach(snap => {
     let data = {};
+    data["id"] = snap.key;
     data["name"] = snap.val().name;
     data["rooms"] = [];
     let index = 0;
@@ -60,8 +61,15 @@ const toDatabaseForm = ({ hostelname, rooms }) => {
   rooms.forEach(room => {
     let roomRange = room.range.split(",");
     roomRange.forEach(range => {
-      let start = range.split("-")[0];
-      let end = range.split("-")[1];
+      let arrayData = range.split("-");
+      let start = arrayData[0];
+      let end;
+      if (arrayData.length === 1) {
+        end = arrayData[0];
+      } else {
+        end = arrayData[1];
+      }
+
       for (let i = start; i <= end; i++) {
         let dat = {};
         for (let j = 1; j <= room.occupancy; j++) {
@@ -85,5 +93,12 @@ export const startAddHostel = hostelData => {
       .then(() => {
         dispatch(startSetHostel());
       });
+  };
+};
+
+export const startRemoveHostel = id => {
+  return dispatch => {
+    database.ref(`hostels/${id}`).remove();
+    dispatch(startSetHostel());
   };
 };

@@ -43,7 +43,7 @@ export const startSetRegister = activate => {
 
 export const startSetSession = () => {
   return dispatch => {
-    database
+    return database
       .ref("sessions")
       .once("value")
       .then(snapshot => {

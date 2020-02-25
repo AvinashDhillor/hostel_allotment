@@ -31,7 +31,7 @@ export default function HostelRoomsData(props) {
           </div>
         </div>
         <div className="col-sm-2">
-          <button type="submit" className="btn btn-light">
+          <button type="submit" className="btn btn-outline-info">
             <i class="fas fa-plus text-info"></i>
           </button>
         </div>

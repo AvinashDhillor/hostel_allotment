@@ -11,6 +11,8 @@ import { Provider } from "react-redux";
 import { firebase } from "./firebase/firebase";
 import { logout, checkRole } from "./actions/auth";
 import { history } from "./router/AppRouter";
+import { startSetSession } from "./actions/session";
+import { startSetHostel } from "./actions/hostel";
 
 const store = configureStore();
 
@@ -33,10 +35,13 @@ ReactDOM.render(<LoadingPage />, document.getElementById("root"));
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
     store.dispatch(checkRole(user.email, user.uid));
-    renderApp();
-    if (history.location.pathname === "/") {
-      history.push("/dashboard");
-    }
+    store.dispatch(startSetSession()).then(() => {
+      renderApp();
+      if (history.location.pathname === "/") {
+        history.push("/dashboard");
+      }
+    });
+    store.dispatch(startSetHostel());
   } else {
     store.dispatch(logout());
     renderApp();

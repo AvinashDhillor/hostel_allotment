@@ -87,7 +87,7 @@ class Hostel extends Component {
             <div class="card-header bg-info text-white">
               <i class="fas fa-archway mr-2"></i>Fill Hostel Detail{" "}
             </div>
-            <div class="card-body">
+            <div class="card-body bg-white text-dark">
               <form onSubmit={this.handleHostelData} id="hostelform"></form>
 
               <div className="form-group">
@@ -112,12 +112,19 @@ class Hostel extends Component {
                   placeholder="Eg. BH-1"
                 ></input>
               </div>
-              <h6 class="text-center text-white"> - Add rooms -</h6>
-              {this.state.rooms.map((room, index) => (
-                <div key={index}>
-                  Range = {room.range}, Size = {room.occupancy}
-                </div>
-              ))}
+              <h6 class="text-center text-dark"> - Add rooms -</h6>
+              <div className="col-sm-8 mx-auto">
+                <table class="table table-bordered">
+                  <tbody>
+                    {this.state.rooms.map((room, index) => (
+                      <tr key={index}>
+                        <td>{room.range}</td>
+                        <td>{room.occupancy}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
               <HostelRoomsData
                 handlerooms={this.handleRoomsData}
               ></HostelRoomsData>
@@ -125,7 +132,7 @@ class Hostel extends Component {
                 onClick={this.toggleHostelForm}
                 type="submit"
                 form="hostelform"
-                className="btn btn-light text-info btn-lg btn-block"
+                className="btn btn-outline-info text-info btn-lg btn-block"
               >
                 <i class="fas fa-paper-plane mr-2"></i>Submit
               </button>
