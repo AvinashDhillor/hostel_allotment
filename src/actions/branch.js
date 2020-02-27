@@ -17,6 +17,13 @@ export const startAddBranch = data => {
   };
 };
 
+export const startSetHostel = ({ branchName, year, gender, hostel }) => {
+  return dispatch => {
+    database.ref(`branches/${branchName}/${year}/${gender}`).set(hostel);
+    dispatch(startSetBranch());
+  };
+};
+
 // let output = [{name: "BTECH" , years : [{year: 1, gender = {"M" : "", "F" : ""} }]}]
 
 const toStateForm = snapshot => {

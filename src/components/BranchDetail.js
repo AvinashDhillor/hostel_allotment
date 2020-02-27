@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { startRemoveBranch } from "../actions/branch";
+import BranchYearInfo from "./BranchYearInfo";
 
 class BranchDetail extends Component {
   constructor(props) {
@@ -60,11 +61,17 @@ class BranchDetail extends Component {
           style={{ display: this.state.toggleData ? "block" : "none" }}
           className="container"
         >
-          <table class="table table-bordered col-sm-6 mx-auto text-center">
+          <table class="table table-bordered col-sm-7 mx-auto text-center">
             <tbody>
-              {/* this.props.hostel.rooms.map(room => {
-                return <HostelRoomlight text-dark room={room}></HostelRoomwarning>;
-              }) */}
+              {this.props.branch.years.map(year => {
+                return (
+                  <BranchYearInfo
+                    text-dark
+                    year={year}
+                    name={this.props.branch.name}
+                  ></BranchYearInfo>
+                );
+              })}
             </tbody>
           </table>
         </div>
