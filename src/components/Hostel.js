@@ -132,7 +132,7 @@ class Hostel extends Component {
                 onClick={this.toggleHostelForm}
                 type="submit"
                 form="hostelform"
-                className="btn btn-outline-info text-info btn-lg btn-block"
+                className="btn btn-info btn-lg btn-block"
               >
                 <i class="fas fa-paper-plane mr-2"></i>Submit
               </button>

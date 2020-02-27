@@ -5,3 +5,4 @@ export const SET_REGISTER = "SET_REGISTER";
 export const SET_ALLOCATE = "SET_ALLOCATE";
 export const ADD_HOSTEL = "ADD_HOSTEL";
 export const SET_HOSTELS = "SET_HOSTELS";
+export const SET_BRANCHES = "SET_BRANCHES";
