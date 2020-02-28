@@ -32,9 +32,9 @@ class BranchDetail extends Component {
           <div className="row mx-auto bg-warning text-dark p-3 d-flex justify-content-center align-items-center">
             <div className="col-sm-1 text-center">
               {this.state.toggleData ? (
-                <i class="fas fa-arrow-circle-down "></i>
+                <i className="fas fa-arrow-circle-down "></i>
               ) : (
-                <i class="fas fa-arrow-circle-right "></i>
+                <i className="fas fa-arrow-circle-right "></i>
               )}
             </div>
             <div className="col-sm-4 border-right text-center border-light">
@@ -42,7 +42,7 @@ class BranchDetail extends Component {
             </div>
             <div className="col-sm-4 border-right text-center border-light">
               Duration :
-              <span class="badge badge-dark">
+              <span className="badge badge-dark">
                 {this.props.branch.years.length} years
               </span>
             </div>
@@ -50,9 +50,9 @@ class BranchDetail extends Component {
               <button
                 onClick={this.handleBranchDelete}
                 type="button"
-                class="btn btn-danger btn-sm "
+                className="btn btn-danger btn-sm "
               >
-                <i class="fas fa-trash"></i>
+                <i className="fas fa-trash"></i>
               </button>
             </div>
           </div>
@@ -61,12 +61,12 @@ class BranchDetail extends Component {
           style={{ display: this.state.toggleData ? "block" : "none" }}
           className="container"
         >
-          <table class="table table-bordered col-sm-7 mx-auto text-center">
+          <table className="table table-bordered col-sm-7 mx-auto text-center">
             <tbody>
               {this.props.branch.years.map(year => {
                 return (
                   <BranchYearInfo
-                    text-dark
+                    key={year.year}
                     year={year}
                     name={this.props.branch.name}
                   ></BranchYearInfo>

@@ -52,25 +52,25 @@ class Branch extends Component {
               onClick={this.toggleBranchForm}
               className="btn btn-warning btn-bg my-3 text-light"
             >
-              <i class="fas fa-plus-square mr-2"></i>
+              <i className="fas fa-plus-square mr-2"></i>
               ADD NEW BRANCH
             </button>
           </div>
 
           <div
-            class="card text-white bg-warning my-3 mx-auto"
+            className="card text-white bg-warning my-3 mx-auto"
             style={{
               maxWidth: "40rem",
               display: this.state.toggleForm ? "block" : "none"
             }}
           >
-            <div class="card-header bg-warniing text-white">
-              <i class="fas fa-code-branch mr-2"></i>Fill branch detail
+            <div className="card-header bg-warniing text-white">
+              <i className="fas fa-code-branch mr-2"></i>Fill branch detail
             </div>
-            <div class="card-body bg-white text-dark">
+            <div className="card-body bg-white text-dark">
               <form onSubmit={this.handleBranchData}>
                 <div className="form-group">
-                  <label for="branchName">Enter Branch Name</label>
+                  <label htmlFor="branchName">Enter Branch Name</label>
                   <input
                     id="branchName"
                     className="form-control"
@@ -81,7 +81,7 @@ class Branch extends Component {
                 </div>
 
                 <div className="form-group">
-                  <label for="branchDuration">Enter Branch Duration</label>
+                  <label htmlFor="branchDuration">Enter Branch Duration</label>
                   <input
                     className="form-control"
                     id="branchDuration"
@@ -95,7 +95,7 @@ class Branch extends Component {
                   type="submit"
                   className="btn btn-warning text-light btn-lg btn-block"
                 >
-                  <i class="fas fa-paper-plane mr-2"></i>Submit
+                  <i className="fas fa-paper-plane mr-2"></i>Submit
                 </button>
               </form>
             </div>
@@ -105,7 +105,9 @@ class Branch extends Component {
 
         <div className="container my-4 ">
           {this.state.branches.map(branch => {
-            return <BranchDetail branch={branch}></BranchDetail>;
+            return (
+              <BranchDetail branch={branch} key={branch.name}></BranchDetail>
+            );
           })}
         </div>
       </>

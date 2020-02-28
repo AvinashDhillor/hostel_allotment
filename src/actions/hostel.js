@@ -9,7 +9,7 @@ export const setHostels = data => ({
 // let output = [
 //   {
 //     name: "krishna",
-//     rooms: [{ roomNumber: 202, occupency: [{ value: 1, occupied: false }] }]
+//     rooms: [{ roomNumber: 202, occupancy: [{ value: 1, occupied: false }] }]
 //   }
 // ];
 

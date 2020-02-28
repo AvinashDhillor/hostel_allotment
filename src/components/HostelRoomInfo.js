@@ -9,21 +9,19 @@ export default function HostelRoomInfo(props) {
         </td>
       </tr>
 
-      {props.room.occupancy.map(detail => {
+      {props.room.occupancy.map((detail, index) => {
         return (
-          <>
-            <tr>
-              <td
-                className={
-                  detail.occupied
-                    ? "bg-danger text-light"
-                    : "bg-success text-light"
-                }
-              >
-                {detail.value}
-              </td>
-            </tr>
-          </>
+          <tr key={`${index}-${props.roomNumber}`}>
+            <td
+              className={
+                detail.occupied
+                  ? "bg-danger text-light"
+                  : "bg-success text-light"
+              }
+            >
+              {detail.value}
+            </td>
+          </tr>
         );
       })}
     </>

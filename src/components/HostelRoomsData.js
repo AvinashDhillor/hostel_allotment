@@ -7,23 +7,23 @@ export default function HostelRoomsData(props) {
         <div className="col-sm-5">
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             id="range"
             name="rooms"
             placeholder="Eg. 210-220, 240-250"
           />
         </div>
         <div className="col-sm-5">
-          <label class="sr-only" for="occupancy">
+          <label className="sr-only" htmlFor="occupancy">
             Size
           </label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">Size</div>
+          <div className="input-group">
+            <div className="input-group-prepend">
+              <div className="input-group-text">Size</div>
             </div>
             <input
               type="number"
-              class="form-control"
+              className="form-control"
               id="occupancy"
               placeholder="0"
               name="occupancy"
@@ -32,7 +32,7 @@ export default function HostelRoomsData(props) {
         </div>
         <div className="col-sm-2">
           <button type="submit" className="btn btn-outline-info">
-            <i class="fas fa-plus text-info"></i>
+            <i className="fas fa-plus text-info"></i>
           </button>
         </div>
       </form>

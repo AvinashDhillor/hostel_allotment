@@ -23,21 +23,24 @@ function BranchHostelMapMale(props) {
       contentLabel="Assign Hostel"
       style={customStyles}
     >
-      <div class="card border-dark" style={{ width: "100%", height: "100%" }}>
-        <div class="card-header bg-dark text-white">Assign Hostel</div>
-        <div class="card-body">
+      <div
+        className="card border-dark"
+        style={{ width: "100%", height: "100%" }}
+      >
+        <div className="card-header bg-dark text-white">Assign Hostel</div>
+        <div className="card-body">
           <form className="mt-4" onSubmit={props.submitForm}>
-            <div class="form-group">
-              <label for="pickhostel">Example select</label>
-              <select class="form-control" id="pickhostel">
+            <div className="form-group">
+              <label htmlFor="pickhostel">Example select</label>
+              <select className="form-control" id="pickhostel">
                 {props.hostels.map(hostel => {
-                  return <option>{hostel.id}</option>;
+                  return <option key={hostel.id}>{hostel.id}</option>;
                 })}
               </select>
             </div>
             <div className="d-flex justify-content-center">
               <button type="submit" class="btn btn-primary">
-                <i class="fas fa-retweet mr-2"></i> Assign
+                <i className="fas fa-retweet mr-2"></i> Assign
               </button>
             </div>
           </form>

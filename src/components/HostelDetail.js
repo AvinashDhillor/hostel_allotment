@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import HostelRoomInfo from "./HostelRoomInfo";
 import { bindActionCreators } from "redux";
 import { startRemoveHostel } from "../actions/hostel";
+import countTotalRooms from "../utils/countTotalRooms";
 
 class HostelDetail extends Component {
   constructor(props) {
@@ -10,6 +11,10 @@ class HostelDetail extends Component {
     this.state = {
       toggleData: false
     };
+  }
+
+  componentDidMount() {
+    this.setState(countTotalRooms(this.props.hostel));
   }
 
   toggleData = () => {
@@ -35,27 +40,29 @@ class HostelDetail extends Component {
           <div className="row mx-auto bg-info p-3 d-flex justify-content-center align-items-center">
             <div className="col-sm-1 text-center">
               {this.state.toggleData ? (
-                <i class="fas fa-arrow-circle-down "></i>
+                <i className="fas fa-arrow-circle-down "></i>
               ) : (
-                <i class="fas fa-arrow-circle-right "></i>
+                <i className="fas fa-arrow-circle-right "></i>
               )}
             </div>
             <div className="col-sm-3 border-right text-center border-light">
               {this.props.hostel.name}
             </div>
             <div className="col-sm-3 border-right text-center border-light">
-              Total Capacity : <span class="badge badge-light">4</span>
+              Total Capacity :{" "}
+              <span className="badge badge-light">{this.state.totalRooms}</span>
             </div>
             <div className="col-sm-3 border-right text-center border-light">
-              Empty cells : <span class="badge badge-light">4</span>
+              Empty cells :{" "}
+              <span className="badge badge-light">{this.state.emptyRooms}</span>
             </div>
             <div className="col-sm-2 d-flex justify-content-center">
               <button
                 onClick={this.handleHostelDelete}
                 type="button"
-                class="btn btn-danger btn-sm"
+                className="btn btn-danger btn-sm"
               >
-                <i class="fas fa-trash"></i>
+                <i className="fas fa-trash"></i>
               </button>
             </div>
           </div>
@@ -69,10 +76,15 @@ class HostelDetail extends Component {
             <br></br>
             <span className="badge badge-danger">U</span> - Unoccupied room
           </div>
-          <table class="table table-bordered col-sm-6 mx-auto text-center">
+          <table className="table table-bordered col-sm-6 mx-auto text-center">
             <tbody>
               {this.props.hostel.rooms.map(room => {
-                return <HostelRoomInfo room={room}></HostelRoomInfo>;
+                return (
+                  <HostelRoomInfo
+                    room={room}
+                    key={room.roomNumber}
+                  ></HostelRoomInfo>
+                );
               })}
             </tbody>
           </table>

@@ -72,26 +72,26 @@ class Hostel extends Component {
               onClick={this.toggleHostelForm}
               className="btn btn-info btn-bg my-3"
             >
-              <i class="fas fa-plus-square mr-2"></i>
+              <i className="fas fa-plus-square mr-2"></i>
               ADD NEW HOSTEL
             </button>
           </div>
 
           <div
-            class="card text-white bg-info my-3 mx-auto"
+            className="card text-white bg-info my-3 mx-auto"
             style={{
               maxWidth: "40rem",
               display: this.state.toggleForm ? "block" : "none"
             }}
           >
-            <div class="card-header bg-info text-white">
-              <i class="fas fa-archway mr-2"></i>Fill Hostel Detail{" "}
+            <div className="card-header bg-info text-white">
+              <i className="fas fa-archway mr-2"></i>Fill Hostel Detail{" "}
             </div>
-            <div class="card-body bg-white text-dark">
+            <div className="card-body bg-white text-dark">
               <form onSubmit={this.handleHostelData} id="hostelform"></form>
 
               <div className="form-group">
-                <label for="hostelName">Enter Hostel Name</label>
+                <label htmlFor="hostelName">Enter Hostel Name</label>
                 <input
                   className="form-control"
                   type="text"
@@ -103,7 +103,7 @@ class Hostel extends Component {
               </div>
 
               <div className="form-group">
-                <label for="hostelCode">Enter Hostel Code</label>
+                <label htmlFor="hostelCode">Enter Hostel Code</label>
                 <input
                   className="form-control"
                   type="text"
@@ -112,9 +112,9 @@ class Hostel extends Component {
                   placeholder="Eg. BH-1"
                 ></input>
               </div>
-              <h6 class="text-center text-dark"> - Add rooms -</h6>
+              <h6 className="text-center text-dark"> - Add rooms -</h6>
               <div className="col-sm-8 mx-auto">
-                <table class="table table-bordered">
+                <table className="table table-bordered">
                   <tbody>
                     {this.state.rooms.map((room, index) => (
                       <tr key={index}>
@@ -134,7 +134,7 @@ class Hostel extends Component {
                 form="hostelform"
                 className="btn btn-info btn-lg btn-block"
               >
-                <i class="fas fa-paper-plane mr-2"></i>Submit
+                <i className="fas fa-paper-plane mr-2"></i>Submit
               </button>
             </div>
           </div>
@@ -142,9 +142,9 @@ class Hostel extends Component {
         <hr></hr>
         <div className="container my-4 ">
           {this.state.hostels.map(hostel => {
-            console.log(hostel);
-
-            return <HostelDetail hostel={hostel}></HostelDetail>;
+            return (
+              <HostelDetail hostel={hostel} key={hostel.id}></HostelDetail>
+            );
           })}
         </div>
       </>

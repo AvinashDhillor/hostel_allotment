@@ -49,14 +49,14 @@ class Session extends Component {
     return (
       <div className="container py-4">
         <div
-          class="card  text-white bg-info m-4 mx-auto"
+          className="card  text-white bg-info m-4 mx-auto"
           style={{ maxWidth: "35rem" }}
         >
-          <div class="card-header text-white">
+          <div className="card-header text-white">
             {" "}
-            <i class="fas fa-history mr-2"></i>Hostel Sessions
+            <i className="fas fa-history mr-2"></i>Hostel Sessions
           </div>
-          <div class="card-body bg-info">
+          <div className="card-body bg-info">
             <p className="display-4 text-center">Handle Session</p>
             <div className="row m-3 p-2">
               <div className="col-6 text-center border-right border-white mb-1">
