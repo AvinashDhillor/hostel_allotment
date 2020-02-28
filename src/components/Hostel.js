@@ -19,7 +19,7 @@ class Hostel extends Component {
     this.props.startSetHostel();
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.hostels !== this.state.hostels) {
       this.setState(() => ({
         hostels: nextProps.hostels

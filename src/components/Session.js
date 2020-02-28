@@ -20,7 +20,7 @@ class Session extends Component {
     this.props.startSetSession();
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (nextProps.session.register || nextProps.session.allocate) {
       this.setState({
         activateRegister: nextProps.session.register.state,
