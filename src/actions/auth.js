@@ -1,9 +1,11 @@
 import { firebase, googleAuthProvider } from "../firebase/firebase";
 import database from "../firebase/firebase";
 
-export const login = uid => ({
+export const login = (uid, name, image) => ({
   type: "LOGIN",
-  uid
+  uid,
+  name,
+  profileImage: image
 });
 
 export const startLogin = () => {
@@ -12,7 +14,7 @@ export const startLogin = () => {
   };
 };
 
-export const checkRole = (email, uid) => {
+export const checkRole = (email, uid, photoURL) => {
   return dispatch => {
     database
       .ref("admins")
@@ -20,11 +22,11 @@ export const checkRole = (email, uid) => {
       .then(snapshot => {
         let emailid = [];
         snapshot.forEach(element => {
-          emailid.push(element.val().email);
+          emailid.push(element.val());
         });
         for (let i = 0; i < emailid.length; i++) {
-          if (email === emailid[i]) {
-            return dispatch(login(uid));
+          if (email === emailid[i].email) {
+            return dispatch(login(uid, emailid[i].name, photoURL));
           }
         }
         dispatch(logout());

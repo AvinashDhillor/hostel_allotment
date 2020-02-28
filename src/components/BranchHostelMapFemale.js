@@ -16,7 +16,7 @@ const customStyles = {
   }
 };
 
-function BranchHostelMap(props) {
+function BranchHostelMapFemale(props) {
   return (
     <Modal
       isOpen={props.toggleModal}
@@ -26,7 +26,7 @@ function BranchHostelMap(props) {
       <div class="card border-dark" style={{ width: "100%", height: "100%" }}>
         <div class="card-header bg-dark text-white">Assign Hostel</div>
         <div class="card-body">
-          <form className="mt-4">
+          <form className="mt-4" onSubmit={props.submitForm}>
             <div class="form-group">
               <label for="pickhostel">Example select</label>
               <select class="form-control" id="pickhostel">
@@ -54,4 +54,4 @@ const mapStateToProps = state => ({
   hostels: state.hostel
 });
 
-export default connect(mapStateToProps)(BranchHostelMap);
+export default connect(mapStateToProps)(BranchHostelMapFemale);

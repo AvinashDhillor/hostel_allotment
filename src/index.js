@@ -34,7 +34,7 @@ ReactDOM.render(<LoadingPage />, document.getElementById("root"));
 
 firebase.auth().onAuthStateChanged(user => {
   if (user) {
-    store.dispatch(checkRole(user.email, user.uid));
+    store.dispatch(checkRole(user.email, user.uid, user.photoURL));
     store.dispatch(startSetSession()).then(() => {
       renderApp();
       if (history.location.pathname === "/") {

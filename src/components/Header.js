@@ -9,14 +9,31 @@ function Header(props) {
     <div>
       <nav class="navbar navbar-dark bg-dark">
         <Link class="navbar-brand" to="/dashboard">
-          <i class="fas fa-h-square mr-2 pl-2"></i>
+          <i class="fas fa-h-square text-danger mr-2 pl-2"></i>
           Dcrust
         </Link>
-
-        <button
-          onClick={props.startLogout}
-          class="btn btn-outline-warning my-2 my-sm-0"
-        >
+        <div className="d-inline align-middle ml-auto mr-3">
+          <span className="text-white mr-3 border-right border-white px-3">
+            Welcome
+          </span>
+          <span className="text-white rounded-pill p-2 bg-info">
+            <div class="d-inline mr-2">
+              <img
+                class="rounded-circle"
+                alt="100x100"
+                width="25px"
+                height="25px"
+                src={props.profileImage}
+                data-holder-rendered="true"
+              />
+            </div>
+            <small className="mr-1">{props.adminName}</small>
+          </span>
+        </div>
+        <button onClick={props.startLogout} class="btn btn-dark mr-2">
+          <i class="fas fa-envelope"></i>
+        </button>
+        <button onClick={props.startLogout} class="btn btn-outline-warning ">
           <i class="fas fa-sign-out-alt mr-2"></i>Logout
         </button>
       </nav>
@@ -67,8 +84,13 @@ function Header(props) {
   );
 }
 
-const mapDispatchtoProps = dispatch => {
+const mapStateToProps = state => ({
+  adminName: state.auth.name,
+  profileImage: state.auth.profileImage
+});
+
+const mapDispatchToProps = dispatch => {
   return bindActionCreators({ startLogout }, dispatch);
 };
 
-export default connect(null, mapDispatchtoProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

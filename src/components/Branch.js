@@ -105,8 +105,6 @@ class Branch extends Component {
 
         <div className="container my-4 ">
           {this.state.branches.map(branch => {
-            console.log(branch);
-
             return <BranchDetail branch={branch}></BranchDetail>;
           })}
         </div>
