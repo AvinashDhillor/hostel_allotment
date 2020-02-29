@@ -1,8 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { startLogout } from "../actions/auth";
-import { NavLink, Link } from "react-router-dom";
+import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { startLogout } from '../actions/auth';
+import { NavLink, Link } from 'react-router-dom';
 
 function Header(props) {
   return (
@@ -13,10 +13,10 @@ function Header(props) {
           Dcrust
         </Link>
         <div className="d-inline align-middle ml-auto mr-3">
-          <span className="text-white mr-3 border-right border-white px-3">
+          <span className="text-white mr-2 border-right border-white px-3">
             Welcome
           </span>
-          <span className="text-white rounded-pill p-2 bg-info">
+          <span className="text-white ">
             <div className="d-inline mr-2">
               <img
                 className="rounded-circle"
@@ -27,7 +27,7 @@ function Header(props) {
                 data-holder-rendered="true"
               />
             </div>
-            <small className="mr-1">{props.adminName}</small>
+            {props.adminName}
           </span>
         </div>
         <button onClick={props.startLogout} className="btn btn-dark mr-2">
