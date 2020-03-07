@@ -5,6 +5,7 @@ import authReducers from "../reducers/authReducer";
 import sessionReducers from "../reducers/sessionReducer";
 import hostelReducer from "../reducers/hostelReducer";
 import branchReducer from "../reducers/branchReducer";
+import dashboardReducer from "../reducers/dashboardReducer";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -14,7 +15,8 @@ export default () => {
       auth: authReducers,
       session: sessionReducers,
       hostel: hostelReducer,
-      branches: branchReducer
+      branches: branchReducer,
+      dashboard: dashboardReducer
     }),
     composeEnhancers(applyMiddleware(thunk))
   );

@@ -72,9 +72,9 @@ class HostelDetail extends Component {
           className="container"
         >
           <div className="col-sm-6 mx-auto m-4">
-            <span className="badge badge-success">O</span> - Occupied room
+            <span className="badge badge-success">O</span> - Unoccupied room
             <br></br>
-            <span className="badge badge-danger">U</span> - Unoccupied room
+            <span className="badge badge-danger">U</span> - Occupied room
           </div>
           <table className="table table-bordered col-sm-6 mx-auto text-center">
             <tbody>

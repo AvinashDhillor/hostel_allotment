@@ -29,7 +29,7 @@ class BranchDetail extends Component {
     return (
       <>
         <div onClick={this.toggleData} className="col-sm-8 mx-auto m-3 ">
-          <div className="row mx-auto bg-warning text-dark p-3 d-flex justify-content-center align-items-center">
+          <div className="row mx-auto bg-warning text-white p-3 d-flex justify-content-center align-items-center">
             <div className="col-sm-1 text-center">
               {this.state.toggleData ? (
                 <i className="fas fa-arrow-circle-down "></i>
@@ -42,7 +42,7 @@ class BranchDetail extends Component {
             </div>
             <div className="col-sm-4 border-right text-center border-light">
               Duration :
-              <span className="badge badge-dark">
+              <span className="badge badge-dark ml-1">
                 {this.props.branch.years.length} years
               </span>
             </div>
