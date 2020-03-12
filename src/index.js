@@ -51,13 +51,13 @@ let data = {
         },
         {
           id: "ashfhfdghdjsdrdfg",
-          name: "Avinash dhillor",
-          rollNumber: "16001001011",
+          name: "Fake user",
+          rollNumber: "16001001089",
           email: "avinash@gmail.com",
           branch: "BTECH",
           roomNo: 206,
           year: "2",
-          fatherName: "Charanjit",
+          fatherName: "Father",
           phoneNumber: "9999999999"
         }
       ]

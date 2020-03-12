@@ -12,6 +12,7 @@ import Branch from "../components/Branch";
 import Session from "../components/Session";
 import NotFound from "../components/NotFound";
 import UserDetail from "../components/UserDetail";
+import Notice from "../components/Notice";
 
 export const history = createHistory();
 
@@ -21,6 +22,7 @@ export default () => (
       <PublicRoute path="/" component={Login} exact={true}></PublicRoute>
       <PrivateRoute path="/dashboard" component={Dashboard}></PrivateRoute>
       <PrivateRoute path="/user/:id" component={UserDetail}></PrivateRoute>
+      <PrivateRoute path="/notice" component={Notice}></PrivateRoute>
       <PrivateRoute path="/hostels" component={Hostel}></PrivateRoute>
       <PrivateRoute path="/branches" component={Branch}></PrivateRoute>
       <PrivateRoute path="/session" component={Session}></PrivateRoute>

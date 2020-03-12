@@ -1,8 +1,8 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { startLogout } from '../actions/auth';
-import { NavLink, Link } from 'react-router-dom';
+import React from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { startLogout } from "../actions/auth";
+import { NavLink, Link } from "react-router-dom";
 
 function Header(props) {
   return (
@@ -13,7 +13,7 @@ function Header(props) {
           Dcrust
         </Link>
         <div className="d-inline align-middle ml-auto mr-3">
-          <span className="text-white mr-2 border-right border-white px-3">
+          <span className="text-white mr-3 border-right border-white px-3">
             Welcome
           </span>
           <span className="text-white ">
@@ -52,6 +52,18 @@ function Header(props) {
             Dashboard
           </NavLink>
         </li>
+
+        <li className="nav-item">
+          <NavLink
+            to="/notice"
+            className="nav-link"
+            activeClassName="btn btn-outline-primary"
+          >
+            <i class="fas fa-bell mr-2"></i>
+            Notice
+          </NavLink>
+        </li>
+
         <li className="nav-item">
           <NavLink
             to="/hostels"
