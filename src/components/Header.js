@@ -30,9 +30,7 @@ function Header(props) {
             {props.adminName}
           </span>
         </div>
-        <button onClick={props.startLogout} className="btn btn-dark mr-2">
-          <i className="fas fa-envelope"></i>
-        </button>
+
         <button
           onClick={props.startLogout}
           className="btn btn-outline-warning "
@@ -53,7 +51,7 @@ function Header(props) {
           </NavLink>
         </li>
 
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <NavLink
             to="/notice"
             className="nav-link"
@@ -62,7 +60,7 @@ function Header(props) {
             <i class="fas fa-bell mr-2"></i>
             Notice
           </NavLink>
-        </li>
+        </li> */}
 
         <li className="nav-item">
           <NavLink
