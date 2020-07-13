@@ -7,66 +7,66 @@ class DashboardHostel extends Component {
     super(props);
     this.state = {
       toggleData: false,
-      searchData: []
+      searchData: [],
     };
   }
 
   toggleData = () => {
-    this.setState(prevState => ({
-      toggleData: !prevState.toggleData
+    this.setState((prevState) => ({
+      toggleData: !prevState.toggleData,
     }));
   };
 
   componentDidMount() {
     this.setState({
-      searchData: this.props.users
+      searchData: this.props.users,
     });
   }
 
-  handleBranchFilter = e => {
+  handleBranchFilter = (e) => {
     let branch = e.target.value;
     if (branch !== "ALL") {
       this.setState({
-        searchData: this.props.users.filter(user => {
+        searchData: this.props.users.filter((user) => {
           return user.branch === branch;
-        })
+        }),
       });
     } else {
       this.setState({
-        searchData: this.props.users
+        searchData: this.props.users,
       });
     }
   };
 
-  handleRoomSearch = e => {
+  handleRoomSearch = (e) => {
     let roomNumber = e.target.value;
     if (roomNumber.length > 2) {
       this.setState({
-        searchData: this.props.users.filter(user => {
+        searchData: this.props.users.filter((user) => {
           return user.roomNo && user.roomNo === parseInt(roomNumber);
-        })
+        }),
       });
     } else {
       this.setState({
-        searchData: this.props.users
+        searchData: this.props.users,
       });
     }
   };
 
-  handleSearch = e => {
+  handleSearch = (e) => {
     if (e.target.value.length > 3) {
       let value = e.target.value.trim().toLowerCase();
       this.setState({
-        searchData: this.props.users.filter(user => {
+        searchData: this.props.users.filter((user) => {
           return (
             user.name.toLowerCase().includes(value) ||
             user.rollNumber.includes(value)
           );
-        })
+        }),
       });
     } else {
       this.setState({
-        searchData: this.props.users
+        searchData: this.props.users,
       });
     }
   };
@@ -131,7 +131,7 @@ class DashboardHostel extends Component {
                   className="form-control"
                 >
                   <option key="default-filter-branch">ALL</option>
-                  {this.props.branches.map(branch => {
+                  {this.props.branches.map((branch) => {
                     return <option key={branch.name}>{branch.name}</option>;
                   })}
                 </select>
@@ -156,11 +156,11 @@ class DashboardHostel extends Component {
                   <th scope="col">Father's Name</th>
                   <th scope="col">Phone No</th>
                   <th scope="col">Email</th>
-                  <th scope="col">Detail</th>
+                  {/* <th scope="col">Detail</th> */}
                 </tr>
               </thead>
               <tbody>
-                {this.state.searchData.map(user => {
+                {this.state.searchData.map((user) => {
                   return <DashboardUsers user={user}></DashboardUsers>;
                 })}
               </tbody>
@@ -172,8 +172,8 @@ class DashboardHostel extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  branches: state.branches
+const mapStateToProps = (state) => ({
+  branches: state.branches,
 });
 
 export default connect(mapStateToProps)(DashboardHostel);
