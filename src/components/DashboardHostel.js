@@ -43,7 +43,7 @@ class DashboardHostel extends Component {
     if (roomNumber.length > 2) {
       this.setState({
         searchData: this.props.users.filter((user) => {
-          return user.roomNo && user.roomNo === parseInt(roomNumber);
+          return user.roomNo && user.roomNo === roomNumber;
         }),
       });
     } else {
@@ -83,8 +83,8 @@ class DashboardHostel extends Component {
               {this.state.toggleData ? (
                 <i className="fas fa-arrow-circle-down "></i>
               ) : (
-                <i className="fas fa-arrow-circle-right "></i>
-              )}
+                  <i className="fas fa-arrow-circle-right "></i>
+                )}
             </div>
             <div className="col-sm-3 border-right text-center border-light">
               {this.props.hostelCode}
