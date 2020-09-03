@@ -160,8 +160,8 @@ class DashboardHostel extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.searchData.map((user) => {
-                  return <DashboardUsers user={user}></DashboardUsers>;
+                {this.state.searchData.map((user, index) => {
+                  return <DashboardUsers user={user} hostelid={this.props.hostelid} id={index}></DashboardUsers>;
                 })}
               </tbody>
             </table>

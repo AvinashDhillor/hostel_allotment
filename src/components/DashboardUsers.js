@@ -1,5 +1,5 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function DashboardUsers(props) {
   return (
@@ -11,11 +11,11 @@ export default function DashboardUsers(props) {
       <td>{props.user.fatherName}</td>
       <td>{props.user.phoneNumber}</td>
       <td>{props.user.email}</td>
-      {/* <td> */}
-      {/* <Link to={`/user/avinash`} target="_blank">
+      <td>
+        <Link to={`/user/${props.user.id}`} target="_blank">
           More
-        </Link> */}
-      {/* </td> */}
+        </Link>
+      </td>
     </tr>
   );
 }

@@ -68,7 +68,7 @@ export const startSetUsers = () => {
                                     motherName: snapData.mother_name,
                                     parentContact: snapData.parent_contact,
                                 }
-                                data[i]['users'].push(userdata);
+                                data[i].users.push(userdata);
                                 break;
                             }
                         }

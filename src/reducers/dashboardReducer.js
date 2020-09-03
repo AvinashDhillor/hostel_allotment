@@ -5,6 +5,6 @@ export default (state = [], action) => {
     case SET_USERS:
       return [...action.users];
     default:
-      return state;
+      return [...state];
   }
 };

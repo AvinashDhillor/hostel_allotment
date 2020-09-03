@@ -86,6 +86,7 @@ class Branch extends Component {
                     className="form-control"
                     id="branchDuration"
                     type="number"
+                    min="1"
                     name="branchDuration"
                     placeholder="0 years"
                   ></input>

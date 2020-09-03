@@ -24,10 +24,12 @@ class Dashboard extends Component {
         <hr></hr>
         <div className="container  my-4">
           {/* {this.state.modelState && <DashboardUserModel className={{ position: "absolute" }}></DashboardUserModel>} */}
-          {this.props.dashboard.map(data => (
+          {this.props.dashboard.map((data, index) => (
             <DashboardHostel
+              key={`hostelid_${index}`}
               hostelCode={data.hostelCode}
               hostelName={data.hostelName}
+              hostelid={index}
               users={data.users}
             ></DashboardHostel>
           ))}

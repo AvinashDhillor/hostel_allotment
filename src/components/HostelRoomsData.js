@@ -25,6 +25,7 @@ export default function HostelRoomsData(props) {
               type="number"
               className="form-control"
               id="occupancy"
+              min="1"
               placeholder="0"
               name="occupancy"
             />
